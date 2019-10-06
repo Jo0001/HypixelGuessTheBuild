@@ -11,8 +11,6 @@ public class Core {
     TODO Sort word output alphabetic
     TODO Fix double spaces inside a command
     TODO Fix list command without letter parameter
-    TODO Fix possibility to add empty lines
-    TODO Output direct to MC
     */
 
     public static void main(String[] args) throws IOException, AWTException {
@@ -55,7 +53,8 @@ public class Core {
                 known = true;
             }
         }
-        if (!known) {
+
+        if (!known && !word.equalsIgnoreCase("")) {
             FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write("\n" + word);
