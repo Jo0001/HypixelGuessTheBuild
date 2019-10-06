@@ -21,7 +21,7 @@ public class Core {
         String input;
         String[] action;
         while (true) {
-            System.out.println("Choose action: [add] or [list] or [exit]");
+            System.out.println("Choose action: [add yourWord] or [list length letter] or [exit]");
             input = s.nextLine();
             input = input.trim();
             action = input.split(" ");
@@ -33,8 +33,6 @@ public class Core {
                 } else {
                     list(Integer.parseInt(action[1]));
                 }
-            } else if (action[0].equalsIgnoreCase("insert")) {
-                insert("test");
             } else if (action[0].equalsIgnoreCase("exit")) {
                 System.exit(-99);
             }

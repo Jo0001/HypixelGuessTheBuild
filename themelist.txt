@@ -232,3 +232,12 @@ hupe
 leiter
 gitarre
 stern
+popkorn
+halloween
+rennwagen
+stock
+kristallkugel
+hund
+schwebebalken
+aquarium
+schwein
