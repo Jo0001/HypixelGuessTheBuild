@@ -6,7 +6,6 @@ public class Core {
 
     /*
     TODO Sort word output alphabetic
-    TODO Fix double spaces inside a command
     */
 
     public static void main(String[] args) throws IOException {
@@ -15,7 +14,7 @@ public class Core {
         String input;
         String[] action;
         while (true) {
-            System.out.println("Choose action: [add yourWord] or [list length letter] or [exit]");
+            System.out.println("Choose action: [add <yourWord>] or [list <length> <letter>] or [exit]");
             input = s.nextLine();
             input = input.trim();
             action = input.split(" ");
@@ -33,10 +32,10 @@ public class Core {
         }
     }
 
-    public static void add(String... words) throws IOException {
+    private static void add(String... words) throws IOException {
         String word = "";
         for (int i = 1; i < words.length; i++) {
-            word = word + " " + words[i];
+            word = word + " " + words[i].trim();
         }
         word = word.trim();
         word = word.toLowerCase();
@@ -50,18 +49,14 @@ public class Core {
             }
         }
         if (!known && !word.equalsIgnoreCase("")) {
-            FileWriter fileWriter = new FileWriter(file, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write("\n" + word);
-            bufferedWriter.close();
-            fileWriter.close();
+            writeToFile(word, true);
             System.out.println("Successful added \"" + word + "\" to the list");
         } else {
-            System.err.println("Word is already in the list");
+            System.err.println("\"" + word + "\" is already in the list");
         }
     }
 
-    public static void list(int l, String letter) throws IOException {
+    private static void list(int l, String letter) throws IOException {
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         String line;
@@ -74,7 +69,7 @@ public class Core {
         }
     }
 
-    public static void list(int l) throws IOException {
+    private static void list(int l) throws IOException {
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         String line;
@@ -87,7 +82,16 @@ public class Core {
         }
     }
 
-    public static void checkFile() throws IOException {
+    private static void writeToFile(String word, boolean append) throws IOException {
+        FileWriter fileWriter = new FileWriter(file, append);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        bufferedWriter.write("\n" + word);
+        bufferedWriter.close();
+        fileWriter.close();
+
+    }
+
+    private static void checkFile() throws IOException {
         if (!file.exists()) {
             System.err.println("No File found. Creating one");
             file.createNewFile();
