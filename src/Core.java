@@ -1,12 +1,10 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Core {
     private static File file = new File("themelist.txt");
-
-    /*
-    TODO Sort word output alphabetic
-    */
 
     public static void main(String[] args) throws IOException {
         checkFile();
@@ -60,13 +58,17 @@ public class Core {
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         String line;
+        ArrayList<String> tmpList = new ArrayList<>();
         while ((line = br.readLine()) != null) {
             if (line.length() == l) {
                 if (line.contains(letter)) {
-                    System.out.println(line);
+                    line = line.replaceAll(letter, letter.toUpperCase());
+                    tmpList.add(line);
                 }
             }
         }
+        Collections.sort(tmpList);
+        System.out.println(String.join(",", tmpList).replaceAll(",", "\n"));
     }
 
     private static void list(int l) throws IOException {
