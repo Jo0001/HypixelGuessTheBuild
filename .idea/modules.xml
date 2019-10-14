@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HypixelGuesTheBuild.iml" filepath="$PROJECT_DIR$/HypixelGuesTheBuild.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HypixelGuessTheBuild.iml" filepath="$PROJECT_DIR$/HypixelGuessTheBuild.iml" />
     </modules>
   </component>
 </project>
