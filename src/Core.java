@@ -47,7 +47,7 @@ public class Core {
             }
         }
         if (!known && !word.equalsIgnoreCase("")) {
-            writeToFile(word, true);
+            writeToFile(word);
             System.out.println("Successful added \"" + word + "\" to the list");
         } else {
             System.err.println("\"" + word + "\" is already in the list");
@@ -84,8 +84,8 @@ public class Core {
         }
     }
 
-    private static void writeToFile(String word, boolean append) throws IOException {
-        FileWriter fileWriter = new FileWriter(file, append);
+    private static void writeToFile(String word) throws IOException {
+        FileWriter fileWriter = new FileWriter(file, true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         bufferedWriter.write("\n" + word);
         bufferedWriter.close();
